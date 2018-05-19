@@ -1,4 +1,4 @@
-#raven-price-app
+# raven-price-app
 
 This is a simple app to track Ravencoin prices.
 
