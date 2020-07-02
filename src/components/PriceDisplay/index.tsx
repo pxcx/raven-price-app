@@ -4,7 +4,8 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { ApplicationState } from '../../store';
 import { RavenState, RavenPrice, emptyRavenPrice } from '../../store/raven/types';
 import * as RavenActions from '../../store/raven/actions';
-import { Container, PriceRow, QuantityInput, BtnTryAgain } from './styles';
+import { Container, PriceRow, QuantityInput, BtnReload } from './styles';
+import { MdCached } from 'react-icons/md';
 
 import strings from '../../resources/strings';
 
@@ -45,14 +46,17 @@ class PriceDisplay extends Component<Props> {
         { error ? 
           <PriceRow>
             { strings.errorText }
-            <BtnTryAgain onClick={this.handleTryAgainButton.bind(this)}>
-              Try Again!
-            </BtnTryAgain>
+            <BtnReload onClick={this.handleTryAgainButton.bind(this)}>
+              <MdCached className='react-icons' />Try Again!
+            </BtnReload>
           </PriceRow> : null }
         { !error && !loading ? (
           <PriceRow>
             <QuantityInput placeholder={strings.intialValue} />
             {strings.rvn} = 100 {strings.btc}
+            <BtnReload onClick={this.handleTryAgainButton.bind(this)}>
+              <MdCached className='react-icons' />Refresh
+            </BtnReload>
           </PriceRow>
         ) : null }
       </Container>

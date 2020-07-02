@@ -20,4 +20,11 @@ export default createGlobalStyle `
     font-family: 'Poppins', sans-serif;
   }
 
+  .react-icons {
+    vertical-align: bottom;
+    height: 16px;
+    font-size: 16px;
+    margin-right: 5px
+  }
+
 `;

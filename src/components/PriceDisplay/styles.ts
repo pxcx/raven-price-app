@@ -18,8 +18,9 @@ export const QuantityInput = styled.input `
   font-size: 16px;
 `;
 
-export const BtnTryAgain = styled.button `
+export const BtnReload = styled.button `
   padding: 5px;
-  margin: 15px;
+  margin: 35px auto;
   text-align: center;
+  display: block;
 `;
