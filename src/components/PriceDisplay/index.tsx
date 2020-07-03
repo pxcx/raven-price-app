@@ -9,6 +9,10 @@ import { MdCached } from 'react-icons/md';
 
 import strings from '../../resources/strings';
 
+interface OwnProps {
+  coin: String;
+}
+
 export interface StateProps {
   raven: RavenState;
 }
@@ -19,18 +23,24 @@ export interface DispatchProps {
   loadFailure(): void;
 }
 
-type Props = StateProps & DispatchProps;
+type Props = StateProps & DispatchProps & OwnProps;
 
 class PriceDisplay extends Component<Props> {
   componentDidMount() {
     this.handleTryAgainButton();
   }
 
+  componentWillReceiveProps(newProps: Props) {
+    if (newProps.coin !== this.props.coin) {
+      this.handleTryAgainButton();
+    }
+  }
+
   handleTryAgainButton() {
     const {loadRequest, loadSuccess, loadFailure} = this.props;
     loadRequest();
     setTimeout(()=> {
-      if(Math.random() > 0.5) {
+      if(Math.random() > 0.2) {
         loadSuccess(emptyRavenPrice);
       } else {
         loadFailure();
@@ -39,7 +49,10 @@ class PriceDisplay extends Component<Props> {
   }
 
   render() {
-    const {loading, error} = this.props.raven;
+    const { coins } = strings;
+    const { loading, error } = this.props.raven;
+    const symbol = this.props.coin === coins.rvn.symbol 
+      ? coins.rvn.symbol : coins.pgn.symbol;
     return (
       <Container>
         { loading ? <PriceRow>{ strings.loadingText }</PriceRow> : null }
@@ -53,7 +66,7 @@ class PriceDisplay extends Component<Props> {
         { !error && !loading ? (
           <PriceRow>
             <QuantityInput placeholder={strings.intialValue} />
-            {strings.rvn} = 100 {strings.btc}
+            {symbol} = 100 {coins.btc.symbol}
             <BtnReload onClick={this.handleTryAgainButton.bind(this)}>
               <MdCached className='react-icons' />Refresh
             </BtnReload>
