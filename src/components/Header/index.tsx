@@ -22,7 +22,7 @@ class Header extends Component<Props> {
         {
           coin === coins.rvn.symbol ? null : 
           <NavArrow onClick={() => changeCoinInContext(coins.rvn.symbol)}>
-            <MdKeyboardArrowLeft size={30} /> {coins.rvn.symbol}
+            <MdKeyboardArrowLeft size={30} />{coins.rvn.symbol}
           </NavArrow>
         }
         </NavContainer>
@@ -36,7 +36,7 @@ class Header extends Component<Props> {
         {
           coin === strings.pgn ? null :
           <NavArrow onClick={() => changeCoinInContext(coins.pgn.symbol)}>
-            {strings.pgn} <MdKeyboardArrowRight size={30} />
+            <MdKeyboardArrowRight size={30} />{strings.pgn}
           </NavArrow>
         }
         </NavContainer>

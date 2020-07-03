@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   max-width: 800px;
-  margin: 50px auto;
+  margin: auto;
   padding: 20px;
   text-align: center;
   display: flex;
@@ -22,19 +22,18 @@ export const SubContainer = styled.div `
 `;
 
 export const NavContainer = styled(SubContainer) `
-  margin-top: 200px;
-  max-width: 50px;
-  min-width: 50px;
+  margin-top: 45vh;
+  max-width: 30px;
+  min-width: 30px;
   font-size: 12px;
 `; 
 
 export const NavArrow = styled.div `
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  
 `;
 
 export const Logo = styled.img `
