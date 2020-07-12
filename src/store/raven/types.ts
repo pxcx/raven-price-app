@@ -15,5 +15,5 @@ export interface RavenState {
 }
 
 export const emptyRavenPrice = {
-  toBTC: 0,
+  toBTC: 0.000005,
 }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { ApplicationState } from '../../store';
-import { RavenState, RavenPrice, emptyRavenPrice } from '../../store/raven/types';
-import * as RavenActions from '../../store/raven/actions';
+import { ApplicationState } from 'store';
+import { RavenState, RavenPrice, emptyRavenPrice } from 'store/raven/types';
+import * as RavenActions from 'store/raven/actions';
+
+import strings from 'resources/strings';
 import { Container, PriceRow, QuantityInput, BtnReload } from './styles';
 import { MdCached } from 'react-icons/md';
-
-import strings from '../../resources/strings';
 
 interface OwnProps {
   coin: String;
@@ -26,17 +26,25 @@ export interface DispatchProps {
 type Props = StateProps & DispatchProps & OwnProps;
 
 class PriceDisplay extends Component<Props> {
+  state = {
+    price: 0
+  }
+
   componentDidMount() {
-    this.handleTryAgainButton();
+    this.loadData();
   }
 
   componentWillReceiveProps(newProps: Props) {
     if (newProps.coin !== this.props.coin) {
-      this.handleTryAgainButton();
+      this.loadData();
     }
   }
 
   handleTryAgainButton() {
+    this.loadData();
+  }
+
+  loadData() {
     const {loadRequest, loadSuccess, loadFailure} = this.props;
     loadRequest();
     setTimeout(()=> {
@@ -50,7 +58,7 @@ class PriceDisplay extends Component<Props> {
 
   render() {
     const { coins } = strings;
-    const { loading, error } = this.props.raven;
+    const { data, loading, error } = this.props.raven;
     const symbol = this.props.coin === coins.rvn.symbol 
       ? coins.rvn.symbol : coins.pgn.symbol;
     return (
@@ -66,7 +74,7 @@ class PriceDisplay extends Component<Props> {
         { !error && !loading ? (
           <PriceRow>
             <QuantityInput placeholder={strings.intialValue} />
-            {symbol} = 100 {coins.btc.symbol}
+            { `${symbol} = ${data.toBTC} ${coins.btc.symbol}` } 
             <BtnReload onClick={this.handleTryAgainButton.bind(this)}>
               <MdCached className='react-icons' />Refresh
             </BtnReload>

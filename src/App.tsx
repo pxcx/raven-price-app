@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import GlobalStyle from './styles/global';
 
-import Header from './components/Header';
-import PriceDisplay from './components/PriceDisplay';
+import Header from 'components/Header';
+import PriceDisplay from 'components/PriceDisplay';
 
 interface OwnProps {};
 
