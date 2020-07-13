@@ -18,10 +18,15 @@ jobs:
       run: yarn
 
     - name: Prepare
+      run: cp .env bkp.env
       run: echo "\"${{ secrets.COINMARKETCAP_API_KEY }}\"" >> .env
 
     - name: Build
       run: yarn build
+
+    - name: Post-Build
+      run: rm -rf .env
+      run: cp bkp.env .env
 
     - name: Deploy
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
