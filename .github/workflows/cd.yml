@@ -30,7 +30,7 @@ jobs:
       run: rm -rf .env
 
     - name: Remove Backup
-      run: cp bkp.env .env
+      run: mv bkp.env .env
 
     - name: Deploy
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
