@@ -17,8 +17,10 @@ jobs:
     - name: Install dependencies
       run: yarn
 
-    - name: Prepare
+    - name: Backup Files
       run: cp .env bkp.env
+
+    - name: Prepare
       run: echo "\"${{ secrets.COINMARKETCAP_API_KEY }}\"" >> .env
 
     - name: Build
@@ -26,6 +28,8 @@ jobs:
 
     - name: Post-Build
       run: rm -rf .env
+
+    - name: Remove Backup
       run: cp bkp.env .env
 
     - name: Deploy
