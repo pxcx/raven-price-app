@@ -3,7 +3,7 @@ name: Continuous Integration
 on: [pull_request]
 
 jobs:
-  buildAndTest:
+  build:
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -11,6 +11,9 @@ jobs:
 
       - name: Install Dependencies
         run: yarn
+
+      - name: Prepare
+        run: echo "\"${{ secrets.COINMARKETCAP_API_KEY }}\"" >> .env
 
       - name: Build
         run: yarn build

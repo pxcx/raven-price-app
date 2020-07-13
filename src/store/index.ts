@@ -1,11 +1,22 @@
-import { createStore, Store } from 'redux';
+import { createStore, applyMiddleware, Store } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import { RavenState } from './raven/types'
-import RootReducer from './rootReducer';
+import { PigeonState } from './pigeon/types'
+import rootReducer from './rootReducer';
+import rootSaga from './rootSaga';
 
 export interface ApplicationState {
-  raven: RavenState
+  raven: RavenState,
+  pigeon: PigeonState
 }
 
-const store: Store<ApplicationState> = createStore(RootReducer);
+const sagaMiddleware = createSagaMiddleware();
+
+const store: Store<ApplicationState> = createStore(
+  rootReducer,
+  applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(rootSaga);
 
 export default store;

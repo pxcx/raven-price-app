@@ -17,6 +17,9 @@ jobs:
     - name: Install dependencies
       run: yarn
 
+    - name: Prepare
+      run: echo "\"${{ secrets.COINMARKETCAP_API_KEY }}\"" >> .env
+
     - name: Build
       run: yarn build
 

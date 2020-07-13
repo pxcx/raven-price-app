@@ -13,7 +13,7 @@ export default {
   rvnTxt: 'Ravencoin',
   pgnTxt: 'Pigeoncoin',
 
-  intialValue: '1',
+  intialValue: 'Quantity',
 
   loadingText: 'Loading data...',
   errorText: 'Data could not be retrieved, please try again.'

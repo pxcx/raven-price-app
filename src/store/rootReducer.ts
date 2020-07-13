@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import RavenReducer from './raven';
+import PigeonReducer from './pigeon';
 
-const RootReducer = combineReducers({
-  raven: RavenReducer
+const rootReducer = combineReducers({
+  raven: RavenReducer,
+  pigeon: PigeonReducer
 });
 
-export default RootReducer;
+export default rootReducer;

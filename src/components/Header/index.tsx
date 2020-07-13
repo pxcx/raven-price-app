@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, SubContainer, Logo, AppTitle, NavArrow, NavContainer } from './styles';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 
-import strings from 'resources/strings';
-import images from 'resources/images';
+import strings from '@/resources/strings';
+import images from '@/resources/images';
 
 interface OwnProps {
   coin: String;
