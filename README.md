@@ -5,6 +5,6 @@
 This is a simple app to track Ravencoin prices. 
 
 - Last build available in [https://raven-price.pxcx.com.br](https://raven-price.pxcx.com.br).
-- built with [React](https://reactjs.org), [Typescript](https://www.typescriptlang.org) :heart:
+- built with [React](https://reactjs.org) and [Typescript](https://www.typescriptlang.org) :heart:
 
 [![Ravencoin Logo](https://miro.medium.com/max/1400/1*24buGblPQIMwVThXeCq5xA.jpeg)](https://ravencoin.org/)
